@@ -25,7 +25,7 @@ function __aws-upload() {
              then
                  if [[ $words[2] = *[!\ ]* ]]
                  then
-                     # just for debugginh
+                     # just for debugging
                      # echo "w1 :: $words[1] w2:: $words[2] \n"
                      _envs=(${$(aws-upload -q -e $words[2]):t})
                      compadd "$@" $_envs
@@ -36,6 +36,3 @@ function __aws-upload() {
 }
 
 compdef __aws-upload aws-upload
-
-
-
