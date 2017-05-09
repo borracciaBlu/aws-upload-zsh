@@ -20,8 +20,14 @@ function __aws-upload() {
              then
                  compadd "$@" $_projects
              fi
+            
+             if [[ $words[2] == "edit" ]]
+             then
+                 _keys=(${$(aws-upload -q -k):t})
+                 compadd "$@" $_keys
+             fi
 
-             if [[ $words[2] != "-p" && $words[2] != "-e" ]]
+             if [[ $words[2] != "-p" && $words[2] != "-e" && $word[2] != "edit" ]]
              then
                  if [[ $words[2] = *[!\ ]* ]]
                  then
