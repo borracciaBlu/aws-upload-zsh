@@ -8,6 +8,7 @@ function __aws-upload() {
            '1: :->project'\
            '2: :->env'
     _projects=(${$(aws-upload -q -p)}) 
+    _keys=(${$(aws-upload -q -k):t})
     
     case $state in
          project)
@@ -21,13 +22,12 @@ function __aws-upload() {
                  compadd "$@" $_projects
              fi
             
-             if [[ $words[2] == "edit" ]]
+             if [[ $words[2] == "edit" || $words[2] == "check" ]]
              then
-                 _keys=(${$(aws-upload -q -k):t})
                  compadd "$@" $_keys
              fi
 
-             if [[ $words[2] != "-p" && $words[2] != "-e" && $word[2] != "edit" ]]
+             if [[ $words[2] != "-p" && $words[2] != "-e" && $word[2] != "edit" && $word[2] != "check" ]]
              then
                  if [[ $words[2] = *[!\ ]* ]]
                  then

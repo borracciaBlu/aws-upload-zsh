@@ -19,7 +19,7 @@ Once you got the basic done, you have to:
 2 - enable the plugin  
 
 ## Copy the aws-upload plugin to the oh-my-zsh plugins folder
-Start copying the repo as oh-myzsh-plugin.
+Start copying the repo as oh-my-zsh plugin.
 
     git clone https://github.com/borracciaBlu/aws-upload-zsh.git ~/.oh-my-zsh/plugins/aws-upload/ 
     
