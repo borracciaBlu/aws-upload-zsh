@@ -22,12 +22,12 @@ function __aws-upload() {
                  compadd "$@" $_projects
              fi
             
-             if [[ $words[2] == "edit" || $words[2] == "check" ]]
+             if [[ $words[2] == "edit" || $words[2] == "check" || $words[2] == "copy" ]]
              then
                  compadd "$@" $_keys
              fi
 
-             if [[ $words[2] != "-p" && $words[2] != "-e" && $word[2] != "edit" && $word[2] != "check" ]]
+             if [[ $words[2] != "-p" && $words[2] != "-e" && $word[2] != "edit" && $word[2] != "check" && $word[2] != "copy" ]]
              then
                  if [[ $words[2] = *[!\ ]* ]]
                  then
