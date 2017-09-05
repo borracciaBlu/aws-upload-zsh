@@ -3,26 +3,35 @@
 function __aws-upload() {
     local curcontext="$curcontext" state line
     typeset -A opt_args
-	 
+
     _arguments \
            '1: :->project'\
            '2: :->env'
-    _projects=(${$(aws-upload -q -p)}) 
+    _projects=(${$(aws-upload -q -p)})
     _keys=(${$(aws-upload -q -k):t})
-    
+    _key_commands=("edit copy delete export")
+
     case $state in
          project)
-             # echo "sono in proj"
+             #echo "sono in proj"
+             #compadd "$@" $_commands
              compadd "$@" $_projects
+             _values "aws-upload command:" \
+                 "import[import a setting file]" \
+                 "export[export a settin gfile]" \
+                 "delete[delete a setting file]" \
+                 "copy[copy a setting file]" \
+                 "edit[edit a setting file]" \
+                 "new[create a new  setting file]"
          ;;
          env)
              # echo "1w1 :: $words[1] w2:: $words[2] \n"
-             if [[ $words[2] == "-e" ]] 
+             if [[ $words[2] == "-e" ]]
              then
                  compadd "$@" $_projects
              fi
-            
-             if [[ $words[2] == "edit" || $words[2] == "check" || $words[2] == "copy" ]]
+
+             if [[ ${_key_commands[@]} =~ $words[2] ]]
              then
                  compadd "$@" $_keys
              fi
