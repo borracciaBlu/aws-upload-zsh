@@ -9,7 +9,7 @@ function __aws-upload() {
            '2: :->env'
     _projects=(${$(aws-upload -q -p)})
     _keys=(${$(aws-upload -q -k):t})
-    _key_commands=("edit copy delete export")
+    _key_commands=("edit copy delete export check")
 
     case $state in
          project)
@@ -17,6 +17,7 @@ function __aws-upload() {
              #compadd "$@" $_commands
              compadd "$@" $_projects
              _values "aws-upload command:" \
+                 "check[check a setting file]" \
                  "import[import a setting file]" \
                  "export[export a settin gfile]" \
                  "delete[delete a setting file]" \
