@@ -9,7 +9,7 @@ function __aws-upload() {
            '2: :->env'
     _projects=(${$(aws-upload -q -p)})
     _keys=(${$(aws-upload -q -k):t})
-    _key_commands=("edit copy delete diff export check")
+    _key_commands=("edit copy diff export check delete")
 
     case $state in
          project)
