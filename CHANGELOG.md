@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.2.0 - 2018-06-18
+### Changed
+- Add support diff
+
 ## 1.1.0 - 2017-09-05
 ### Changed
 - Add support import

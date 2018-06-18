@@ -9,7 +9,7 @@ function __aws-upload() {
            '2: :->env'
     _projects=(${$(aws-upload -q -p)})
     _keys=(${$(aws-upload -q -k):t})
-    _key_commands=("edit copy delete export check")
+    _key_commands=("edit copy diff export check delete")
 
     case $state in
          project)
@@ -18,11 +18,12 @@ function __aws-upload() {
              compadd "$@" $_projects
              _values "aws-upload command:" \
                  "check[check a setting file]" \
-                 "import[import a setting file]" \
-                 "export[export a settin gfile]" \
-                 "delete[delete a setting file]" \
-                 "copy[copy a setting file]" \
                  "edit[edit a setting file]" \
+                 "diff[get different file to sync]" \
+                 "copy[copy a setting file]" \
+                 "import[import a setting file]" \
+                 "export[export a setting file]" \
+                 "delete[delete a setting file]" \
                  "new[create a new  setting file]"
          ;;
          env)
@@ -37,7 +38,7 @@ function __aws-upload() {
                  compadd "$@" $_keys
              fi
 
-             if [[ $words[2] != "-p" && $words[2] != "-e" && $word[2] != "edit" && $word[2] != "check" && $word[2] != "copy" ]]
+             if [[ $words[2] != "-p" && $words[2] != "-e" && $word[2] != "edit" && $word[2] != "check" && $word[2] != "copy" && $word[2] != "diff" ]]
              then
                  if [[ $words[2] = *[!\ ]* ]]
                  then
